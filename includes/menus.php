@@ -8,6 +8,8 @@ class Menus {
         $theme_dir = Theme::get( 'dir' );
 
 		require_once $theme_dir . '/classes/class-walker-nav-menu-collapse.php';
+		require_once $theme_dir . '/classes/class-walker-nav-menu-footer.php';
+		require_once $theme_dir . '/classes/class-walker-nav-menu-offsite.php';
 
 		add_action( 'after_setup_theme', array( __CLASS__, 'register_menus' ), 0 );
 
