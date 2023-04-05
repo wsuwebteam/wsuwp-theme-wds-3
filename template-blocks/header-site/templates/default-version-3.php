@@ -13,6 +13,11 @@
 					<span class="wsu-logo-lockup__title"><?php echo wp_kses_post( get_bloginfo( 'name' ) ); ?></span>
 				</span>
 			</a>
+			<?php if ( is_active_sidebar( 'header_banner' ) ) : ?>
+				<div class="wsu-header-unit__widgets">
+					<?php dynamic_sidebar( 'header_banner' ); ?>
+				</div>
+			<?php endif; ?>
 			<button class="wsu-button-menu wsu-slide-in-panel--open" data-panel="wsu-navigation-mobile" aria-label="Open Open Site Menu">Menu</button>
 		</div>
 		<?php if ( has_nav_menu( 'site_horizontal' ) ) : ?>

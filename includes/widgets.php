@@ -108,9 +108,6 @@ class Widgets {
 
 		}
 
-		
-
-
 		register_sidebar(
 			array(
 				'name'          => 'Footer',
@@ -152,6 +149,18 @@ class Widgets {
 			array(
 				'name'          => 'Quicklinks | Footer',
 				'id'            => 'wsu_wds_quicklinks_footer',
+				'description'   => 'Widgets in this area will be shown in quicklinks bar.',
+				'before_widget' => '<div class="wsu-widget">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h2>',
+				'after_title'   => '</h2>',
+			)
+		);
+
+		register_sidebar(
+			array(
+				'name'          => 'Site Header',
+				'id'            => 'header_banner',
 				'description'   => 'Widgets in this area will be shown in quicklinks bar.',
 				'before_widget' => '<div class="wsu-widget">',
 				'after_widget'  => '</div>',
