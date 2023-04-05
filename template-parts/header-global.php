@@ -1,0 +1,1 @@
+<?php WSUWP\Theme\WDS\Theme::render_block( 'header-global' ); ?>
