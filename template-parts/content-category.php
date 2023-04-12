@@ -1,35 +1,5 @@
-<?php WSUWP\Theme\WDS\Theme::render_block( 
-	'layout', 
-	array( 
-		'position' => 'start', 
-		'context'  => 'category', 
-		'sidebar'  => WSUWP\Theme\WDS\Theme::get_template_option( 'template_category', 'sidebar', 'default', 'sidebar_post' ),
-	) 
-); ?>
-<?php WSUWP\Theme\WDS\Theme::render_block(
-		'article-header',
-		array(
-			'displayByline'      => 'hide',
-			'displayPublishDate' => 'hide',
-			'displayShare'       => 'hide',
-		)
-	); ?>
-	<?php WSUWP\Theme\WDS\Theme::render_block( 'widget-area', array( 'area' => 'before-category' ) ); ?>
-	<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-		<?php WSUWP\Theme\WDS\Theme::render_block(
-			'article',
-			array(
-				'format'     => 'index',
-				'context'    => 'category',
-				)
-			); ?>
-	<?php endwhile; endif; ?>
-    <?php WSUWP\Theme\WDS\Theme::render_block( 'widget-area', array( 'area' => 'after-category' ) ); ?>
-<?php WSUWP\Theme\WDS\Theme::render_block( 
-	'layout', 
-	array( 
-		'position' => 'end', 
-		'context'  => 'category', 
-		'sidebar'  => WSUWP\Theme\WDS\Theme::get_template_option( 'template_category', 'sidebar', 'default', 'sidebar_post' ),
-	) 
-); ?>
+<?php get_template_part( 'template-parts/layout-start', 'category', array( 'template' => 'category' ) ); ?>
+<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+	<?php get_template_part( 'template-parts/format', WSUWP\Theme\WDS\Theme::get_template_setting( 'template_category', 'format', 'index' ), array( 'template' => 'category' ) ); ?>
+<?php endwhile; endif; ?>
+<?php get_template_part( 'template-parts/layout-end', 'category', array( 'template' => 'category' ) ); ?>

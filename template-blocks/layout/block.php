@@ -6,7 +6,7 @@ class Block_layout extends Theme_Block {
 	protected static $block_slug    = 'layout';
 	protected static $option_group  = 'layout';
 	protected static $default_args = array(
-		'displayBlock'             => '',
+		'displayBlock'     => '',
 		'className'        => '',
 		'position'         => '',
 		'context'          => '',

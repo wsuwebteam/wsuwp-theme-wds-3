@@ -58,15 +58,34 @@ class Theme {
 
 	}
 
+	// Legacy
 	public static function get_template_option( $template, $option_key, $block_attr = '', $default_value = '' ) {
 
 		return Theme_Options::get_template_option( $template, $option_key, $block_attr, $default_value );
 
 	}
 
+	public static function get_template_setting( $template, $option_key, $default = '' ) {
+
+		if ( is_array( $template ) ) {
+
+			$template = ( ! empty( $template['template'] ) ) ? $template['template'] : 'page';
+
+		}
+
+		return Theme_Options::get_wsu_option( 'template_' . $template, $option_key, $default );
+
+	}
+
 	public static function render_block( $block, $args = array() ) {
 
 		return Theme_Blocks::render( $block, $args );
+
+	}
+
+	public static function get_template( $args = array() ) {
+
+		return ( is_array( $args ) && ! empty( $args['template'] ) ) ? $args['template'] : 'page';
 
 	}
 
