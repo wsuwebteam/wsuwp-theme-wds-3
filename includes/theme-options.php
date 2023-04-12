@@ -15,7 +15,9 @@ class Theme_Options {
 
 		if ( ! empty( $wsu_options[ $option_group ] ) && isset( $wsu_options[ $option_group ][ $option_key ] ) ) {
 
-			return $wsu_options[ $option_group ][ $option_key ];
+			$wsu_option = $wsu_options[ $option_group ][ $option_key ];
+
+			return ( 'default' !== $wsu_option ) ? $wsu_option : $default;
 
 		} else {
 
@@ -31,6 +33,13 @@ class Theme_Options {
 		$set_option = self::get_wsu_option( $template, $option_key, $block_attr );
 
 		return ( ! empty( $set_option ) && 'default' !== $set_option ) ? $set_option : $default_value;
+
+	}
+
+	public static function get_template_setting( $template, $option_key, $default_value = '' ) {
+
+		return self::get_wsu_option( $template, $option_key, $default_value );
+
 
 	}
 
