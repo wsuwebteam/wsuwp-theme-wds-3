@@ -110,6 +110,18 @@ class Widgets {
 
 		register_sidebar(
 			array(
+				'name'          => 'Before Footer',
+				'id'            => 'before_footer',
+				'description'   => 'Widgets in this area will be shown in the site footer.',
+				'before_widget' => '<div class="wsu-widget">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h2>',
+				'after_title'   => '</h2>',
+			)
+		);
+
+		register_sidebar(
+			array(
 				'name'          => 'Footer',
 				'id'            => 'footer_widgets',
 				'description'   => 'Widgets in this area will be shown in the site footer.',
