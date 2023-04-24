@@ -3,9 +3,9 @@
 		Quicklinks / Search
 		<i class="wsu-header-utility-bar__icon"></i>
 	</button>
-	<a href="<?php echo esc_url( $args['give_link'] ); ?>" class="wsu-header-utility-bar__cta">Give</a>
+	<a href="<?php echo esc_url( $args['primaryActionLink'] ); ?>" class="wsu-header-utility-bar__cta"><?php echo wp_kses_post( $args['primaryActionText'] ); ?></a>
 </div>
-<nav id="wsu-quicklinks-panel" class="wsu-slide-in-panel wsu-quicklinks wsu-slide-in-panel--width-large wsu-has-background--dark wsu-slide-in-panel--style-crimson-mark" aria-expanded="false" aria-haspopup="true" aria-label="Quick Links menu">
+<nav id="wsu-quicklinks-panel" class="wsu-slide-in-panel wsu-quicklinks wsu-slide-in-panel--width-large wsu-has-background--dark wsu-slide-in-panel--style-crimson-mark wsu-mode--dark" aria-expanded="false" aria-haspopup="true" aria-label="Quick Links menu">
 	<button class="wsu-slide-in-panel__overlay wsu-slide-in-panel--close">Close Quick Links</button>
 	<div class="wsu-slide-in-panel__panel wsu-quicklinks__panel wsu-background--gradient-dark">
 		<div class="wsu-slide-in-panel__panel-inner">
@@ -14,23 +14,14 @@
 					<button class="wsu-button  wsu-slide-in-panel--close wsu-button--style-action">Close Search</button>
 				</div>
 				<div class=" wsu-quicklinks__search">
-					<?php if ( ! empty( $args['local_search']) ) : ?>
-					<form class="wsu-search wsu-has-background--dark wsu-search--style-underline" method="get" action="<?php echo get_site_url(); ?>">
-						<div class="wsu-search__search-bar">
-							<input class="wsu-search__input" type="text" aria-lable="Search input" placeholder="Search" name="s">
-							<button class="wsu-search__submit" aria-lable="Submit Search"></button>
-						</div>
-					</form>
-					<?php else: ?>
-					<form class="wsu-search wsu-has-background--dark wsu-search--style-underline" method="get" action="https://search.wsu.edu">
-						<div class="wsu-search__search-bar">
-							<input type="hidden" name="sa" value="search">
-							<input class="wsu-search__input" type="text" aria-lable="Search input" placeholder="Search" name="q">
-							<button class="wsu-search__submit" aria-lable="Submit Search"></button>
-						</div>
-					</form>
-					<?php endif; ?>
-					<div class="wsu-decorator  wsu-decorator--style-lines-gray"></div>
+				<?php WSUWP\Theme\WDS\Theme::render_block(
+					'site-search',
+					array(
+						'style' => 'underline',
+						'showOptions' => $args['showSearchOptions'],
+						'context'     => $args['searchContext'],
+					)
+				); ?>
 				</div>
 				<div class="wsu-quicklinks__content">
 					<?php if ( has_nav_menu( 'quicklinks' ) ) : ?>

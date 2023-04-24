@@ -55,7 +55,7 @@ class Walker_Nav_Menu_Collapse extends \Walker_Nav_Menu {
 
 			$classes = '';
 
-			$parent_classes = array( 'current-menu-ancestor', 'current-page-ancestor' );
+			$parent_classes = array( 'current-menu-ancestor', 'current-page-ancestor', 'current_page_parent');
 
 			$classes .= ( array_intersect( $parent_classes, (array) $item->classes ) ) ? ' wsu-menu-collapse--current-item-parent' : '';
 			$classes .= ( in_array( 'current-menu-item', (array) $item->classes, true ) ) ? ' wsu-menu-collapse--current-item' : '';
