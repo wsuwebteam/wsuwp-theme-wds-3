@@ -29,6 +29,7 @@ class Theme_Blocks {
 		require_once $theme_dir . '/template-blocks/navigation-mobile/block.php';
 		require_once $theme_dir . '/template-blocks/navigation-vertical/block.php';
 		require_once $theme_dir . '/template-blocks/quicklinks/block.php';
+		require_once $theme_dir . '/template-blocks/site-search/block.php';
 		require_once $theme_dir . '/template-blocks/social-site/block.php';
 		require_once $theme_dir . '/template-blocks/widget-area/block.php';
 
@@ -96,6 +97,9 @@ class Theme_Blocks {
 				break;
 			case 'quicklinks':
 				Block_Quicklinks::render_block( $args );
+				break;
+			case 'site-search':
+				Block_Site_Search::render_block( $args );
 				break;
 			case 'social-site':
 				Block_Social_Site::render_block( $args );
