@@ -4,7 +4,7 @@
 class Theme {
 
 
-	protected static $version = '0.0.6';
+	protected static $version = '0.0.7';
 
 
 	public static function get( $property ) {
@@ -30,6 +30,7 @@ class Theme {
 		define( 'WDSTHEMEVERSION', 3 );
 
 		require_once __DIR__ . '/includes/supports.php';
+		require_once __DIR__ . '/includes/theme-config.php';
 		require_once __DIR__ . '/includes/theme-options.php';
 		require_once __DIR__ . '/includes/theme-blocks.php';
 		require_once __DIR__ . '/includes/scripts.php';
