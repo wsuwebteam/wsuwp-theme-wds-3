@@ -26,6 +26,7 @@ class Theme_Blocks {
 		require_once $theme_dir . '/template-blocks/header-global/block.php';
 		require_once $theme_dir . '/template-blocks/header-site/block.php';
 		require_once $theme_dir . '/template-blocks/layout/block.php';
+		require_once $theme_dir . '/template-blocks/navigation-audience/block.php';
 		require_once $theme_dir . '/template-blocks/navigation-mobile/block.php';
 		require_once $theme_dir . '/template-blocks/navigation-vertical/block.php';
 		require_once $theme_dir . '/template-blocks/quicklinks/block.php';
@@ -88,6 +89,9 @@ class Theme_Blocks {
 				break;
 			case 'layout':
 				Block_Layout::render_block( $args );
+				break;
+			case 'navigation-audience':
+				Block_Navigation_Audience::render_block( $args );
 				break;
 			case 'navigation-mobile':
 				Block_Navigation_Mobile::render_block( $args );
