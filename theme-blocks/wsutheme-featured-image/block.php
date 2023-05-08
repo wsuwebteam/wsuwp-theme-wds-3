@@ -31,7 +31,9 @@ class Theme_Block_Featured_Image extends Block {
 
 	protected static function set_args( &$args, $content ) {
 
-		if ( empty( $content ) ) {
+		$args['displayBlock'] = static::get_theme_option( 'displayFeaturedImage', $args, $args['displayBlock'] );
+
+		if ( empty( $content ) && 'hide' !== $args['displayBlock'] ) {
 
 			if ( empty( $args['image_id'] ) && in_the_loop() && has_post_thumbnail() ) {
 
