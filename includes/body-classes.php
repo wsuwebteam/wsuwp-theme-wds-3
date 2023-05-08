@@ -18,6 +18,8 @@ class Body_Classes {
 
 		}
 
+		$classes[] = 'wsu-template--' . Theme::get_context();
+
 		return $classes;
 
 	}
