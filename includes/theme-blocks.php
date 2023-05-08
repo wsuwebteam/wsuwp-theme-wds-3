@@ -30,6 +30,7 @@ class Theme_Blocks {
 		'wsutheme/site-social'           => 'Theme_Block_Site_Social',
 		'wsutheme/taxonomy-list'         => 'Theme_Block_Taxonomy_List',
 		'wsutheme/title'                 => 'Theme_Block_Title',
+		'wsutheme/widget-area'           => 'Theme_Block_Widget_Area',
 		'wsutheme/wrapper-content'       => 'Theme_Block_Wrapper_Content',
 		'wsutheme/wrapper-main'          => 'Theme_Block_Wrapper_Main',
 		'wsutheme/wrapper-site'          => 'Theme_Block_Wrapper_Site',
