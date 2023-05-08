@@ -31,17 +31,6 @@ class Widgets {
 
 	public static function register_widget_areas() {
 
-		register_sidebar(
-			array(
-				'name'          => 'Post | Sidebar',
-				'id'            => 'sidebar_post',
-				'description'   => '',
-				'before_widget' => '<div class="wsu-widget wsu-widget--sidebar">',
-				'after_widget'  => '</div>',
-				'before_title'  => '<h2>',
-				'after_title'   => '</h2>',
-			)
-		);
 
 		$widget_areas = array( 
 			'post'         => 'Post',
@@ -53,25 +42,22 @@ class Widgets {
 
 		foreach ( $widget_areas as $slug => $label ) {
 
-			if ( 'post' !== $slug ) {
+			if ( Theme::get_wsu_option( 'template_' . $slug, 'addSidebar', false ) || 'post' === $slug ) {
 
-				if ( Theme::get_wsu_option( 'template_' . $slug, 'addSidebar', false ) ) {
-
-					register_sidebar(
-						array(
-							'name'          => "{$label} | Sidebar",
-							'id'            => "sidebar_{$slug}",
-							'description'   => '',
-							'before_widget' => '<div class="wsu-widget wsu-widget--sidebar">',
-							'after_widget'  => '</div>',
-							'before_title'  => '<h2>',
-							'after_title'   => '</h2>',
-						)
-					);
-	
-				}
+				register_sidebar(
+					array(
+						'name'          => "{$label} | Sidebar",
+						'id'            => "sidebar_{$slug}",
+						'description'   => '',
+						'before_widget' => '<div class="wsu-widget wsu-widget--sidebar">',
+						'after_widget'  => '</div>',
+						'before_title'  => '<h2>',
+						'after_title'   => '</h2>',
+					)
+				);
 
 			}
+
 
 			if ( Theme::get_wsu_option( 'template_' . $slug, 'widgetsBefore', false ) ) {
 
