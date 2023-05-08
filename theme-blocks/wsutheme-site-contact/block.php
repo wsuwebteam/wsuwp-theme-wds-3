@@ -18,18 +18,7 @@ class Theme_Block_Site_Contact extends Block {
 
 	protected static function render( $args, $content = '' ) {
 
-		self::set_args( $args );
-
-		$contact_actions = implode( '&nbsp;&nbsp; ', array_filter( array( $args['phone'], $args['email'] ) ) );
-
-		$contact_groups = array(
-			$args['organization'],
-			$args['address'],
-			$args['city'] ,
-			$args['state'] ,
-			$args['zip'],
-			$contact_actions,
-		);
+		
 
 		if ( ! static::should_hide( $args ) ) {
 
@@ -55,9 +44,28 @@ class Theme_Block_Site_Contact extends Block {
 		$args['phone']        = ( ! empty( $args['phone'] ) ) ? $args['phone'] : Theme::get_wsu_option( 'contact', 'phone' );
 		$args['email']        = ( ! empty( $args['email'] ) ) ? $args['email'] : Theme::get_wsu_option( 'contact', 'email' );
 
-		$args['phone'] = ( ! empty( $args['phone'] ) ) ? '<a href="tel:' . wp_kses_post( $args['phone'] ) . '">' . wp_kses_post( $args['phone'] ) . '</a>' : '';
+		$args['phone'] = ( ! empty( $args['phone'] ) ) ? '<a href="tel:' . esc_attr( $args['phone'] ) . '">' . wp_kses_post( $args['phone'] ) . '</a>' : '';
 		$args['email'] = ( ! empty( $args['email'] ) ) ? '<a href="mailto:' . esc_url( $args['email'] ) . '">' . wp_kses_post( $args['email'] ) . '</a>' : '';
 
+	}
+
+	protected static function set_content( &$content, $args ) {
+
+		if ( empty( $content ) ) {
+
+			$contact_actions = implode( '&nbsp;&nbsp; ', array_filter( array( $args['phone'], $args['email'] ) ) );
+
+			$contact_groups = array(
+				$args['organization'],
+				$args['address'],
+				$args['city'],
+				$args['state'],
+				$args['zip'],
+				$contact_actions,
+			);
+
+			$content = implode( ',&nbsp;  ', array_filter( $contact_groups ) );
+		}
 	}
 
 
