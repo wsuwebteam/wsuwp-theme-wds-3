@@ -3,119 +3,87 @@
 
 class Theme_Blocks {
 
+	protected static $theme_blocks = array(
+		'wsutheme/article'               => 'Theme_Block_Article',
+		'wsutheme/breadcrumbs'           => 'Theme_Block_Breadcrumbs',
+		'wsutheme/byline'                => 'Theme_Block_Byline',
+		'wsutheme/featured-image'        => 'Theme_Block_Featured_Image',
+		'wsutheme/global-footer'         => 'Theme_Block_Global_Footer',
+		'wsutheme/global-header'         => 'Theme_Block_Global_Header',
+		'wsutheme/navigation-audience'   => 'Theme_Block_Navigation_Audience',
+		'wsutheme/navigation-horizontal' => 'Theme_Block_Navigation_Horizontal',
+		'wsutheme/navigation-mobile'     => 'Theme_Block_Navigation_Mobile',
+		'wsutheme/navigation-vertical'   => 'Theme_Block_Navigation_Vertical',
+		'wsutheme/post-content'          => 'Theme_Block_Post_Content',
+		'wsutheme/post-excerpt'          => 'Theme_Block_Post_Excerpt',
+		'wsutheme/post-header'           => 'Theme_Block_Post_Header',
+		'wsutheme/post-footer'           => 'Theme_Block_Post_Footer',
+		'wsutheme/post-share'            => 'Theme_Block_Post_Share',
+		'wsutheme/posts'          		 => 'Theme_Block_Posts',
+		'wsutheme/posts-pagination'      => 'Theme_Block_Posts_Pagination',
+		'wsutheme/publish-date'          => 'Theme_Block_Publish_Date',
+		'wsutheme/quicklinks'            => 'Theme_Block_Quicklinks',
+		'wsutheme/site-contact'          => 'Theme_Block_Site_Contact',
+		'wsutheme/site-footer'           => 'Theme_Block_Site_Footer',
+		'wsutheme/site-header'           => 'Theme_Block_Site_Header',
+		'wsutheme/site-search'           => 'Theme_Block_Site_Search',
+		'wsutheme/site-social'           => 'Theme_Block_Site_Social',
+		'wsutheme/taxonomy-list'         => 'Theme_Block_Taxonomy_List',
+		'wsutheme/title'                 => 'Theme_Block_Title',
+		'wsutheme/wrapper-content'       => 'Theme_Block_Wrapper_Content',
+		'wsutheme/wrapper-main'          => 'Theme_Block_Wrapper_Main',
+		'wsutheme/wrapper-site'          => 'Theme_Block_Wrapper_Site',
+	);
+
 	public static function init() {
+
+		add_action( 'init', array( __CLASS__, 'register' ) );
+		add_filter( 'allowed_block_types', array( __CLASS__, 'add_blocks' ), 11 );
 
 		$theme_dir = Theme::get( 'dir' );
 
-		require_once $theme_dir . '/classes/class-theme-block.php';
-
-		require_once $theme_dir . '/template-blocks/article/block.php';
-		require_once $theme_dir . '/template-blocks/article-banner/block.php';
-		require_once $theme_dir . '/template-blocks/article-byline/block.php';
-		require_once $theme_dir . '/template-blocks/article-content/block.php';
-		require_once $theme_dir . '/template-blocks/article-footer/block.php';
-		require_once $theme_dir . '/template-blocks/article-header/block.php';
-		require_once $theme_dir . '/template-blocks/article-image/block.php';
-		require_once $theme_dir . '/template-blocks/article-publish-date/block.php';
-		require_once $theme_dir . '/template-blocks/article-share/block.php';
-		require_once $theme_dir . '/template-blocks/article-taxonomy/block.php';
-		require_once $theme_dir . '/template-blocks/breadcrumbs/block.php';
-		require_once $theme_dir . '/template-blocks/contact-site/block.php';
-		require_once $theme_dir . '/template-blocks/footer-global/block.php';
-		require_once $theme_dir . '/template-blocks/footer-site/block.php';
-		require_once $theme_dir . '/template-blocks/header-global/block.php';
-		require_once $theme_dir . '/template-blocks/header-site/block.php';
-		require_once $theme_dir . '/template-blocks/layout/block.php';
-		require_once $theme_dir . '/template-blocks/navigation-audience/block.php';
-		require_once $theme_dir . '/template-blocks/navigation-mobile/block.php';
-		require_once $theme_dir . '/template-blocks/navigation-vertical/block.php';
-		require_once $theme_dir . '/template-blocks/quicklinks/block.php';
-		require_once $theme_dir . '/template-blocks/site-search/block.php';
-		require_once $theme_dir . '/template-blocks/social-site/block.php';
-		require_once $theme_dir . '/template-blocks/widget-area/block.php';
+		require_once $theme_dir . '/classes/class-block.php';
 
 	}
 
-	public static function render( $block, $args = array() ) {
+	public static function register() {
 
-		switch ( $block ) {
-			case 'article':
-				Block_Article::render_block( $args );
-				break;
-			case 'article-banner':
-				Block_Article_Banner::render_block( $args );
-				break;
-			case 'article-byline':
-				Block_Article_Byline::render_block( $args );
-				break;
-			case 'article-content':
-				Block_Article_Content::render_block( $args );
-				break;
-			case 'article-footer':
-				Block_Article_Footer::render_block( $args );
-				break;
-			case 'article-header':
-				Block_Article_Header::render_block( $args );
-				break;
-			case 'article-image':
-				Block_Article_Image::render_block( $args );
-				break;
-			case 'article-publish-date':
-				Block_Article_Publish_Date::render_block( $args );
-				break;
-			case 'article-share':
-				Block_Article_Share::render_block( $args );
-				break;
-			case 'article-taxonomy':
-				Block_Article_Taxonomy::render_block( $args );
-				break;
-			case 'breadcrumbs':
-				Block_Breadcrumbs::render_block( $args );
-				break;
-			case 'contact-site':
-				Block_Contact_Site::render_block( $args );
-				break;
-			case 'footer-global':
-				Block_Footer_Global::render_block( $args );
-				break;
-			case 'footer-site':
-				Block_Footer_Site::render_block( $args );
-				break;
-			case 'header-global':
-				Block_Header_Global::render_block( $args );
-				break;
-			case 'header-site':
-				Block_Header_Site::render_block( $args );
-				break;
-			case 'layout':
-				Block_Layout::render_block( $args );
-				break;
-			case 'navigation-audience':
-				Block_Navigation_Audience::render_block( $args );
-				break;
-			case 'navigation-mobile':
-				Block_Navigation_Mobile::render_block( $args );
-				break;
-			case 'navigation-vertical':
-				Block_Navigation_Vertical::render_block( $args );
-				break;
-			case 'quicklinks':
-				Block_Quicklinks::render_block( $args );
-				break;
-			case 'site-search':
-				Block_Site_Search::render_block( $args );
-				break;
-			case 'social-site':
-				Block_Social_Site::render_block( $args );
-				break;
-			case 'widget-area':
-				Block_Widget_Area::render_block( $args );
-				break;
-			default:
-				break;
+		// Get blocks to register
+		$blocks = self::$theme_blocks;
+
+		// Get the block directory
+		$block_dir = Theme::get( 'dir' ) . '/theme-blocks/';
+
+		foreach ( $blocks as $block => $class ) {
+
+			// folder name should be the block name with the / replaced with - (i.e. wsuwp/name -> wsupw-name)
+			$block_folder = str_replace( '/', '-', $block );
+
+			$block_class = __NAMESPACE__ . '\\' . $class;
+
+			require_once $block_dir . $block_folder . '/block.php';
+
+			register_block_type(
+				$block,
+				array(
+					'api_version'     => 2,
+					'render_callback' => array( $block_class, 'render_block' ),
+					'editor_script'   => false,
+				)
+			);
+
 		}
 
 	}
+
+	public static function add_blocks( $allowed_blocks ) {
+
+		$theme_blocks = array_keys( self::$theme_blocks );
+
+		return array_merge( $allowed_blocks, $theme_blocks );
+
+	}
+
 
 }
 

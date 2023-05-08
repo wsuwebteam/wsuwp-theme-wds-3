@@ -37,6 +37,7 @@ class Theme {
 		require_once __DIR__ . '/includes/menus.php';
 		require_once __DIR__ . '/includes/widgets.php';
 		require_once __DIR__ . '/includes/body-classes.php';
+		require_once __DIR__ . '/includes/template.php';
 
 	}
 
@@ -78,9 +79,16 @@ class Theme {
 
 	}
 
-	public static function render_block( $block, $args = array() ) {
 
-		return Theme_Blocks::render( $block, $args );
+	public static function get_wsu_block_template( $slug, $name = '', $args = array() ) {
+
+		Template::get_wsu_block_template( $slug, $name, $args );
+
+	}
+
+	public static function get_context() {
+
+		return Template::get_context();
 
 	}
 
