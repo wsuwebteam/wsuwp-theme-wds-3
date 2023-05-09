@@ -2,7 +2,7 @@
 	<div class="wsu-slide-in-panel__panel ">
 		<div class="wsu-slide-in-panel__panel-inner">
 			<div class="wsu-navigation-vertical__menu-wrapper">
-			<?php echo $menu_html; ?>
+			<?php echo $content; ?>
 			</div>
 		</div>
 	</div>
