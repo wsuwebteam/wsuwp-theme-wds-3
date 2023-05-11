@@ -13,6 +13,7 @@ class Theme_Block_Post_Excerpt extends Block {
 
 	protected static function render( $args, $content = '' ) {
 
+
 		if ( ! static::should_hide( $args ) ) {
 
 			$template_path = static::get_template_path( 'template' );
@@ -23,6 +24,17 @@ class Theme_Block_Post_Excerpt extends Block {
 	
 			}
 		}
+	}
+
+
+	protected static function set_content( &$content, $args ) {
+
+		ob_start();
+
+		the_excerpt();
+
+		$content = ob_get_clean();
+
 	}
 
 
