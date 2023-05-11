@@ -14,7 +14,8 @@ class Block {
 
 		if ( empty( $args['context'] ) ) {
 
-			$args['context'] = Theme::get_context();
+			$args['theme_context'] = Theme::get_context( true );
+			$args['context']       = Theme::get_context();
 
 		}
 
@@ -32,14 +33,23 @@ class Block {
 
 		}
 
-		ob_start();
+		$template_content = static::get_template_content( $args, $content );
 
-		static::render( $args, $content );
+		if ( $template_content ) {
 
-		$block_html = ob_get_clean();
+			return do_blocks( $template_content );
 
-		return apply_filters( 'wsu_filter_output_theme_block', $block_html, static::$block_slug, $args, $content );
+		} else {
 
+			ob_start();
+
+			static::render( $args, $content );
+
+			$block_html = ob_get_clean();
+
+			return apply_filters( 'wsu_filter_output_theme_block', $block_html, static::$block_slug, $args, $content );
+
+		}
 	}
 
 
@@ -70,7 +80,7 @@ class Block {
 
 	}
 
-	protected static function get_template_path( $slug, $name = '', $path = '' ) {
+	protected static function get_template_path( $slug, $name = '', $path = '', $args = array() ) {
 
 		if ( '' === $path ) {
 
@@ -106,6 +116,47 @@ class Block {
 
 		return ( $ignore_empty && empty( $value ) ) ? $default : $value;
 
+	}
+
+
+	protected static function get_template_content( $args, $content ) {
+
+		$templates = array();
+
+		if ( is_array( $args['theme_context'] ) && ! empty( $args['theme_context'] ) ) {
+
+			if ( count( $args['theme_context'] ) > 1 ) {
+
+				$templates[] = 'wsutheme-' . static::$block_slug . '-' . implode( '-', $args['theme_context'] );
+
+			}
+
+			$templates[] = 'wsutheme-' . static::$block_slug . '-' . $args['theme_context'][0];
+
+		}
+
+		$templates[] = 'wsutheme-' . static::$block_slug;
+
+		$theme_template = Template::get_template_option( $templates );
+
+		if ( $theme_template ) {
+
+			$template_post = get_post( $theme_template );
+
+			if ( $template_post ) {
+
+				return str_replace( '[[content]]', $content, $template_post->post_content );
+
+			} else {
+
+				return false;
+
+			}
+		} else {
+
+			return false;
+
+		}
 	}
 
 }
