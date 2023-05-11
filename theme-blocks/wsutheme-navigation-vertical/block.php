@@ -9,6 +9,7 @@ class Theme_Block_Navigation_Vertical extends Block {
 		'displayBlock' => true,
 		'className'    => '',
 		'menuStyle'    => 'vertical',
+		'menuDepth'    => '3',
  	);
 
 
@@ -31,6 +32,8 @@ class Theme_Block_Navigation_Vertical extends Block {
 
 		}
 
+		$args['menuDepth'] = intval( $args['menuDepth'] );
+
 	}
 
 
@@ -51,6 +54,7 @@ class Theme_Block_Navigation_Vertical extends Block {
 					'container'      => '',
 					'walker'         => new Walker_Nav_Menu_Collapse( $args ),
 					'menu_id'        => 'wsu-site-menu',
+					'depth'          => $args['menuDepth'],
 				)
 			);
 
