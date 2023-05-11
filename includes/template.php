@@ -4,10 +4,17 @@
 class Template {
 
 
-	protected static $context = '';
+	protected static $context            = array();
+	protected static $template_post_type = 'wsu_template';
+	protected static $template_prefix    = array( 'template-', 'article', 'wsutheme-' );
+	protected static $option_key         = 'wsu_templates';
 
 
 	public static function init() {
+
+		add_action( 'init', array( __CLASS__, 'register_post_type' ) );
+
+		add_action( 'save_post_' . self::$template_post_type, array( __CLASS__, 'save_template' ), 20, 2 );
 
 	}
 
@@ -45,46 +52,166 @@ class Template {
 	}
 
 
-	public static function get_context() {
+	public static function get_context( $return_array = false ) {
 
 		if ( empty( self::$context ) ) {
 
 			if ( is_front_page() ) {
 
-				self::$context = 'front-page';
+				self::$context[] = 'front-page';
 	
 			} elseif ( is_home() ) {
 	
-				self::$context = 'home';
+				self::$context[] = 'home';
 	
 			} elseif ( is_singular() ) {
 	
-				self::$context = get_post_type();
+				self::$context[] = get_post_type();
 	
 			} elseif ( is_category() ) {
 	
-				self::$context = 'category';
+				self::$context[] = 'category';
+
+				$term = get_queried_object();
+
+				self::$context[] = $term->slug;
 	
 			} elseif ( is_tag() ) {
 	
-				self::$context = 'tag';
+				self::$context[] = 'tag';
+
+				$term = get_queried_object();
+
+				self::$context[] = $term->slug;
 	
 			} elseif ( is_tax() ) {
 
 				$term = get_queried_object();
 
-				self::$context = $term->taxonomy;
+				self::$context[] = $term->taxonomy;
+
+				self::$context[] = $term->slug;
 
 			} elseif ( is_post_type_archive() ) {
 
 				$post_type = get_queried_object();
 
-				self::$context = 'archive-' . $post_type->name;
+				self::$context[] = 'archive-' . $post_type->slug;
 
 			}
 		}
 
-		return self::$context;
+		if ( $return_array ) {
+
+			return self::$context;
+
+		} else {
+
+			return ( is_array( self::$context ) && isset( self::$context[0] ) ) ? self::$context[0] : '';
+
+		}
+
+	}
+
+
+	public static function register_post_type() {
+
+		$labels = array(
+			'name'                  =>  'WSU Templates', 
+			'singular_name'         =>  'WSU Template',
+			'menu_name'             =>  'WSU Templates',
+			'name_admin_bar'        =>  'WSU Template',
+			'add_new'               =>  'Add New',
+			'add_new_item'          =>  'Add New WSU Template',
+			'new_item'              =>  'New WSU Template',
+			'edit_item'             =>  'Edit WSU Template',
+			'view_item'             =>  'View WSU Template',
+			'all_items'             =>  'WSU Templates',
+			'search_items'          =>  'Search WSU Templates',
+			'parent_item_colon'     =>  'Parent WSU Templates:',
+			'not_found'             =>  'No templates found.',
+			'not_found_in_trash'    =>  'No templates found in Trash.',
+			'featured_image'        =>  'WSU Template',
+			'set_featured_image'    =>  'Set cover image',
+			'remove_featured_image' =>  'Remove cover image',
+			'use_featured_image'    =>  'Use as cover image',
+			'archives'              =>  'WSU Template archives',
+			'insert_into_item'      =>  'Insert into template',
+			'uploaded_to_this_item' =>  'Uploaded to this template',
+			'filter_items_list'     =>  'Filter templates list',
+			'items_list_navigation' =>  'WSU Templates list navigation',
+			'items_list'            =>  'WSU Templates list',
+		);
+	
+		$args = array(
+			'labels'             => $labels,
+			'public'             => false,
+			'publicly_queryable' => false,
+			'show_ui'            => true,
+			'show_in_menu'       => ( Theme::get_wsu_option( 'theme', 'allow_edit_templates', false ) ) ? 'themes.php' : false,
+			'show_in_rest'       => true,
+			'query_var'          => true,
+			'rewrite'            => array( 'slug' => 'wsu-template' ),
+			'capability_type'    => 'post',
+			'has_archive'        => false,
+			'hierarchical'       => false,
+			'menu_position'      => null,
+			'supports'           => array( 'title', 'editor' ),
+		);
+	
+		register_post_type( self::$template_post_type, $args );
+
+	}
+
+
+	public static function save_template( $post_id, $post ) {
+
+		// bail out if this is an autosave
+		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+			return;
+		}
+
+		// bail out if this is not an event item
+		if ( self::$template_post_type !== $post->post_type ) {
+			return;
+		}
+
+		foreach ( self::$template_prefix as $template_key ) {
+
+			if ( stripos(  $post->post_name, $template_key ) !== false ) {
+
+				self::set_template_option( $post->post_name, $post_id );
+
+			}
+		}
+	}
+
+
+	protected static function set_template_option( $template_name, $template_id ) {
+
+		$wsu_templates = get_option( self::$option_key, array() );
+
+		$wsu_templates[ sanitize_text_field( $template_name ) ] = intval( $template_id );
+
+		update_option( self::$option_key, $wsu_templates );
+
+	}
+
+
+	public static function get_template_option( $templates ) {
+
+		$wsu_templates = get_option( self::$option_key, array() );
+
+		foreach ( $templates as $template ) {
+
+			if ( array_key_exists( $template, $wsu_templates ) ) {
+
+				return $wsu_templates[ $template ];
+
+			}
+		}
+
+		return false;
 
 	}
 

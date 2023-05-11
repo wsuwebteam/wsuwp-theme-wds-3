@@ -15,7 +15,7 @@
 						'menu_class'     => 'wsu-menu-collapse wsu-menu-collapse--style-mobile',
 						'container'      => '',
 						'walker'         => new WSUWP\Theme\WDS\Walker_Nav_Menu_Collapse(),
-						'menu_id'        => 'wsu-site-menu',
+						'menu_id'        => 'wsu-site-menu-mobile',
 					)
 				); ?>
 			</div>

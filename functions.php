@@ -4,7 +4,7 @@
 class Theme {
 
 
-	protected static $version = '0.0.9';
+	protected static $version = '1.1.0';
 
 
 	public static function get( $property ) {
@@ -86,9 +86,9 @@ class Theme {
 
 	}
 
-	public static function get_context() {
+	public static function get_context( $return_array = false ) {
 
-		return Template::get_context();
+		return Template::get_context( $return_array );
 
 	}
 

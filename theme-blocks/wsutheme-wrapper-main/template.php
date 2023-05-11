@@ -1,3 +1,3 @@
-<main role="main" id="wsu-content" class="wsu-wrapper-main" tabindex="-1">
+<main role="main" id="wsu-content" class="wsu-wrapper-main">
 	<?php echo $content; ?>
 </main>
