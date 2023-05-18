@@ -16,6 +16,8 @@ class Template {
 
 		add_action( 'save_post_' . self::$template_post_type, array( __CLASS__, 'save_template' ), 20, 2 );
 
+		add_action( 'wp_trash_post', array( __CLASS__, 'check_remove_template' ) );
+
 	}
 
 
@@ -163,6 +165,49 @@ class Template {
 
 	}
 
+	protected static function remove_template( $post_id ) {
+
+		if ( $post_id ) {
+
+			$post = get_post( $post_id  );
+
+			if ( $post ) {
+
+				// bail out if this is not an event item
+				if ( self::$template_post_type !== $post->post_type ) {
+					return;
+				}
+
+				foreach ( self::$template_prefix as $template_key ) {
+
+					if ( stripos( $post->post_name, $template_key ) !== false ) {
+		
+						self::set_template_option( $post->post_name, $post_id, true );
+		
+					}
+				}
+			}
+		}
+	}
+
+
+	public static function check_remove_template( $post_id ) {
+
+		// Verify if is trashing multiple posts
+		if ( isset( $_GET['post'] ) && is_array( $_GET['post'] ) ) {
+
+			foreach ( $_GET['post'] as $post_id ) {
+
+				self::remove_template( intval( $post_id ) );
+
+			}
+		} else {
+
+			self::remove_template( intval( $post_id ) );
+
+		}
+	}
+
 
 	public static function save_template( $post_id, $post ) {
 
@@ -187,11 +232,22 @@ class Template {
 	}
 
 
-	protected static function set_template_option( $template_name, $template_id ) {
+	protected static function set_template_option( $template_name, $template_id, $remove = false ) {
 
 		$wsu_templates = get_option( self::$option_key, array() );
 
-		$wsu_templates[ sanitize_text_field( $template_name ) ] = intval( $template_id );
+		if ( $remove ) {
+
+			if ( isset( $wsu_templates[ sanitize_text_field( $template_name ) ] ) ) {
+
+				unset( $wsu_templates[ sanitize_text_field( $template_name ) ] );
+
+			}
+		} else {
+
+			$wsu_templates[ sanitize_text_field( $template_name ) ] = intval( $template_id );
+
+		}
 
 		update_option( self::$option_key, $wsu_templates );
 
