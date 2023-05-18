@@ -10,7 +10,7 @@
         <!-- wp:wsutheme/wrapper-main -->
             <!-- wp:wsutheme/post-header -->
                 <!-- wp:wsutheme/breadcrumbs /-->
-                <!-- wp:wsutheme/title -->Search<!-- /wp:wsutheme/title -->
+                <!-- wp:wsutheme/page-title -->Search<!-- /wp:wsutheme/title -->
                 <!-- wp:wsutheme/site-search /-->
             <!-- /wp:wsutheme/post-header -->
         <!-- /wp:wsutheme/wrapper-main -->

@@ -45,7 +45,7 @@ class Theme_Block_Site_Contact extends Block {
 		$args['email']        = ( ! empty( $args['email'] ) ) ? $args['email'] : Theme::get_wsu_option( 'contact', 'email' );
 
 		$args['phone'] = ( ! empty( $args['phone'] ) ) ? '<a href="tel:' . esc_attr( $args['phone'] ) . '">' . wp_kses_post( $args['phone'] ) . '</a>' : '';
-		$args['email'] = ( ! empty( $args['email'] ) ) ? '<a href="mailto:' . esc_url( $args['email'] ) . '">' . wp_kses_post( $args['email'] ) . '</a>' : '';
+		$args['email'] = ( ! empty( $args['email'] ) ) ? '<a href="mailto:' . sanitize_text_field( $args['email'] ) . '">' . sanitize_text_field( $args['email'] ) . '</a>' : '';
 
 	}
 

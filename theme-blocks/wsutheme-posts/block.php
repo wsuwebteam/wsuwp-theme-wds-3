@@ -16,18 +16,26 @@ class Theme_Block_Posts extends Block {
 
 		if ( ! static::should_hide( $args ) ) {
 
-			if ( have_posts() ) {
+			$template_path = static::get_template_path( 'templates/template', $args['style'] );
 
-				while ( have_posts() ) {
+			if ( $template_path ) {
 
-					the_post();
+				if ( have_posts() ) {
 
-					Theme::get_wsu_block_template( 'block-templates/article', $args['style'] );
+					while ( have_posts() ) {
 
+						the_post();
+
+						ob_start();
+
+						include $template_path;
+
+						echo do_blocks( ob_get_clean() );
+
+					}
 				}
 			}
 		}
-
 	}
 
 }
