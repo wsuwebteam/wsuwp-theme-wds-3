@@ -1,7 +1,7 @@
 <!-- wp:wsutheme/article {'style":"page"} -->
     <!-- wp:wsutheme/post-header -->
         <!-- wp:wsutheme/breadcrumbs /-->
-        <!-- wp:wsutheme/title /-->
+        <!-- wp:wsutheme/post-title /-->
         <!-- wp:wsutheme/publish-date {"displayBlock":"hide","location":"before"} /-->
         <!-- wp:wsutheme/byline {"displayBlock":"hide","location":"before"} /-->
         <!-- wp:wsutheme/post-share {"displayBlock":"hide","location":"before"} /-->
