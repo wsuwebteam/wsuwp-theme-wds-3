@@ -1,9 +1,9 @@
 <?php namespace WSUWP\Theme\WDS; 
 
 
-class Theme_Block_Title extends Block {
+class Theme_Block_Page_Title extends Block {
 
-	protected static $block_slug    = 'title';
+	protected static $block_slug    = 'page-title';
 	protected static $option_group  = '';
 	protected static $default_args = array(
 		'displayBlock' => true,
@@ -50,7 +50,11 @@ class Theme_Block_Title extends Block {
 
 			} elseif ( is_home() ) {
 
-				$content = single_post_title('', false );
+				$content = single_post_title( '', false );
+
+			} elseif ( is_singular() ) {
+
+				$content = single_post_title( '', false );
 
 			}
 		}

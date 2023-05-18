@@ -1,7 +1,7 @@
 <header class="wsu-header-unit ">
 	<div class="wsu-header-unit__inner">
 		<div class="wsu-header-unit__banner">
-			<a href="<?php echo esc_url( get_home_url() ); ?>" class="wsu-logo-lockup  wsu-logo-lockup--style-unit">
+			<a href="<?php echo esc_url( $args['siteLink'] ); ?>" class="wsu-logo-lockup  wsu-logo-lockup--style-unit">
 				<span class="wsu-logo-lockup__icon-wrapper">
 					<svg role="img" aria-labelledby="wsu-coug-head__title" class="wsu-coug-head" enable-background="new 0 0 70.2 69.6" version="1.1" viewBox="0 0 70.2 69.6" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
 						<title id="wsu-coug-head__title">WSU Cougar Head Logo</title>
@@ -9,8 +9,8 @@
 					</svg>
 				</span>
 				<span class="wsu-logo-lockup__title-wrapper">
-					<span class="wsu-logo-lockup__subtitle"><?php echo wp_kses_post( get_bloginfo( 'description' ) ); ?></span>
-					<span class="wsu-logo-lockup__title"><?php echo wp_kses_post( get_bloginfo( 'name' ) ); ?></span>
+					<span class="wsu-logo-lockup__subtitle"><?php echo wp_kses_post( $args['siteSubtitle'] ); ?></span>
+					<span class="wsu-logo-lockup__title"><?php echo wp_kses_post( $args['siteTitle'] ); ?></span>
 				</span>
 			</a>
 			<?php if ( is_active_sidebar( 'header_banner' ) ) : ?>
@@ -20,21 +20,5 @@
 			<?php endif; ?>
 			<button class="wsu-button-menu wsu-slide-in-panel--open" data-panel="wsu-navigation-mobile" aria-label="Open Open Site Menu">Menu</button>
 		</div>
-		<?php if ( has_nav_menu( 'site_horizontal' ) ) : ?>
-			<nav class="wsu-navigation-header ">
-			<?php
-				wp_nav_menu(
-					array(
-						'theme_location' => 'site_horizontal',
-						'menu_class'     => 'wsu-menu-collapse  wsu-menu-collapse--style-horizontal',
-						'container'      => '',
-						'walker'         => new WSUWP\Theme\WDS\Walker_Nav_Menu_Collapse(),
-						'menu_id'        => 'wsu-site-menu',
-						'depth'          => $args['menuDepth'],
-					)
-				);
-				?>
-			</nav>
-		<?php endif; ?>
 	</div>
 </header>
