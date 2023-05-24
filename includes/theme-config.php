@@ -14,6 +14,15 @@ class Theme_Config {
 
 		add_filter( 'the_posts', array( __CLASS__, 'tribe_past_reverse_chronological' ), 100 );
 
+		add_filter( 'get_comment_author_link', array( __CLASS__, 'comments_remove_comment_author_link' ), 10, 3 );
+
+	}
+
+
+	public static function comments_remove_comment_author_link( $return, $author, $comment_ID ) {
+
+		return $author;
+
 	}
 
 
