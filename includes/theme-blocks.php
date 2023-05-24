@@ -7,6 +7,7 @@ class Theme_Blocks {
 		'wsutheme/article'               => 'Theme_Block_Article',
 		'wsutheme/breadcrumbs'           => 'Theme_Block_Breadcrumbs',
 		'wsutheme/byline'                => 'Theme_Block_Byline',
+		'wsutheme/comments'              => 'Theme_Block_Comments',
 		'wsutheme/featured-image'        => 'Theme_Block_Featured_Image',
 		'wsutheme/global-footer'         => 'Theme_Block_Global_Footer',
 		'wsutheme/global-header'         => 'Theme_Block_Global_Header',

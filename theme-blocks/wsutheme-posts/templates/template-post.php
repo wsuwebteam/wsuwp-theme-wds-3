@@ -1,4 +1,4 @@
-<!-- wp:wsutheme/article {'style":"news"} -->
+<!-- wp:wsutheme/article {'style":"post"} -->
     <!-- wp:wsutheme/post-header -->
         <!-- wp:wsutheme/breadcrumbs /-->
         <!-- wp:wsutheme/post-title /-->
@@ -15,4 +15,5 @@
         <!-- wp:wsutheme/taxonomy-list {"taxonomy":"categories"} /-->
         <!-- wp:wsutheme/taxonomy-list {"taxonomy":"tags"} /-->
     <!-- /wp:wsutheme/post-footer -->
+    <!-- wp:wsutheme/comments /-->
 <!-- /wp:wsutheme/article -->
