@@ -8,7 +8,7 @@
     <!-- wp:wsutheme/navigation-audience /-->
     <!-- wp:wsutheme/wrapper-content {"sidebar":"sidebar_post"} -->
         <!-- wp:wsutheme/wrapper-main -->
-            <!-- wp:wsutheme/posts {"style":"news"} -->
+            <!-- wp:wsutheme/posts {"style":"post"} -->
             <!-- /wp:wsutheme/posts -->
         <!-- /wp:wsutheme/wrapper-main -->
     <!-- /wp:wsutheme/wrapper-content -->
