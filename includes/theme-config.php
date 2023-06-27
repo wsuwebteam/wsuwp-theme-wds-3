@@ -16,6 +16,27 @@ class Theme_Config {
 
 		add_filter( 'get_comment_author_link', array( __CLASS__, 'comments_remove_comment_author_link' ), 10, 3 );
 
+		add_filter( 'wp_robots', array( __CLASS__, 'filter_robots' ), 9999 );
+
+	}
+
+
+	public static function filter_robots( $robots ) {
+
+		if ( is_search() ) {
+
+			if ( array_key_exists( 'follow', $robots ) ) {
+
+				$robots['follow'] = false;
+
+			}
+
+			$robots['nofollow'] = true;
+
+		}
+
+		return $robots;
+
 	}
 
 
@@ -30,6 +51,12 @@ class Theme_Config {
 
 		if ( is_array( $title_parts ) ) {
 
+			if ( is_search() ) {
+
+				$title_parts['title'] = 'Search';
+
+			}
+
 			$title_parts['network'] = ' Washington State University';
 
 			if ( ! empty( $title_parts['tagline'] ) ) {
@@ -42,6 +69,7 @@ class Theme_Config {
 		return $title_parts;
 
 	}
+
 
     public static function filter_title_separator( $sep ) {
 
