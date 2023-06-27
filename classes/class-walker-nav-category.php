@@ -16,6 +16,7 @@ class Walker_Nav_Menu_Category extends \Walker_Nav_Menu {
 
 	public function start_el( &$output, $data_object, $depth = 0, $args = array(), $current_object_id = 0 ) {
 		// Restores the more descriptive, specific name for use within this method.
+
 		$menu_item = $data_object;
 
 		$classes   = empty( $menu_item->classes ) ? array() : (array) $menu_item->classes;
@@ -31,6 +32,19 @@ class Walker_Nav_Menu_Category extends \Walker_Nav_Menu {
 		$output .= ' >';
 
 		$output .= ( in_array( 'menu-item-has-children', $classes ) ) ? $this->get_button_item_html( $menu_item, $classes, $args, $depth ) : $this->get_link_item_html( $menu_item, $classes, $args, $depth );
+
+	}
+
+
+	public function end_lvl( &$output, $depth = 0, $args = null ) {
+
+		if ( 0 === $depth ) {
+
+			$output .= '<li><button class="wsu-menu-action--close-menu">Close Menu</button></li>';
+
+		}
+		
+		$output .= '</ul>';
 
 	}
 
@@ -70,9 +84,24 @@ class Walker_Nav_Menu_Category extends \Walker_Nav_Menu {
 
 		if ( in_array( 'menu-item-has-children', $classes ) ) {
 
-			$attrs['aria-expanded'] = ( $this->is_expanded( $classes ) ) ? 'True' : 'False';
-			$attrs['aria-haspopup'] = 'True';
-		}		
+			$attrs['aria-expanded'] = ( $this->is_expanded( $classes ) ) ? 'true' : 'false';
+			$attrs['aria-haspopup'] = 'true';
+		}
+
+		$list_classes = array();
+
+		$list_classes[] = ( in_array( 'current-menu-item', $classes, true ) ) ? 'wsu-menu--current-item' : '';
+
+		foreach ( $classes as $class ) {
+
+			if ( false !== strpos( $class, 'current-' ) ) {
+
+				$list_classes[] = 'wsu-menu--curent-item-ancestor';
+
+			}
+		}
+
+		$attrs['class'] = implode( ' ', $list_classes );
 
 		return $attrs;
 
