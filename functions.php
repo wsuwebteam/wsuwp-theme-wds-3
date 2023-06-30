@@ -80,9 +80,12 @@ class Theme {
 	}
 
 
-	public static function get_wsu_block_template( $slug, $name = '', $args = array() ) {
+	/*
+	* Alias for includes/templates|get_wsu_block_template *
+	*/
+	public static function get_wsu_block_template( $slug, $name = '', $args = array(), $do_blocks = true ) {
 
-		Template::get_wsu_block_template( $slug, $name, $args );
+		Template::get_wsu_block_template( $slug, $name, $args, $do_blocks );
 
 	}
 
