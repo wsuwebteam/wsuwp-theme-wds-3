@@ -18,6 +18,20 @@ class Template {
 
 		add_action( 'wp_trash_post', array( __CLASS__, 'check_remove_template' ) );
 
+		add_filter(
+			'previous_posts_link_attributes',
+			function() {
+				return 'class="wsu-pagination__previous wsu-button wsu-button--style-outline" aria-label="Go to Previous Page"';
+			}
+		);
+		
+		add_filter(
+			'next_posts_link_attributes',
+			function() {
+				return 'class="wsu-pagination__next wsu-button wsu-button--style-outline"  aria-label="Go to Next Page"';
+			}
+		);
+
 	}
 
 
