@@ -84,7 +84,7 @@ class Walker_Nav_Menu_Category extends \Walker_Nav_Menu {
 
 		if ( in_array( 'menu-item-has-children', $classes ) ) {
 
-			$attrs['aria-expanded'] = ( $this->is_expanded( $classes ) ) ? 'true' : 'false';
+			$attrs['aria-expanded'] = ( $this->is_expanded( $classes, $depth ) ) ? 'true' : 'false';
 			$attrs['aria-haspopup'] = 'true';
 		}
 
@@ -96,7 +96,7 @@ class Walker_Nav_Menu_Category extends \Walker_Nav_Menu {
 
 			if ( false !== strpos( $class, 'current-' ) ) {
 
-				$list_classes[] = 'wsu-menu--curent-item-ancestor';
+				$list_classes[] = 'wsu-menu--current-item-ancestor';
 
 			}
 		}
@@ -137,7 +137,7 @@ class Walker_Nav_Menu_Category extends \Walker_Nav_Menu {
 	}
 
 
-	protected function is_expanded( $classes ) {
+	protected function is_expanded( $classes, $depth ) {
 
 		$expand_classes = array(
 			'current_page_item',
@@ -145,7 +145,7 @@ class Walker_Nav_Menu_Category extends \Walker_Nav_Menu {
 			'current_page_ancestor',
 		);
 
-		return ( ! empty( array_intersect( $classes, $expand_classes ) ) ) ? true : false;
+		return ( ! empty( array_intersect( $classes, $expand_classes ) ) && 0 !== $depth ) ? true : false;
 
 	}
 
