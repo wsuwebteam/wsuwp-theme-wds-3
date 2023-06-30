@@ -21,7 +21,24 @@ class Template {
 	}
 
 
-	public static function get_wsu_block_template( $slug, $name = '', $args = array() ) {
+	/**
+	 * Used instead of get_template_part(...) to get and render templates that include block markup.
+	 *
+	 * This method is generally a mirror of get_template_part(...) but includes additional markup to render blocks. The
+	 * render block functionality can be bypassed by setting the $do_blocks to false. Use $do_blocks = false if you are including
+	 * a block template in a sub-template (e.g. template-header/template-footer) that opens in one php file and closes in another.
+	 * Templates can accept and use args passed though the $args array (e.g template-header ) similar to get_template_part.
+	 *
+	 * @since 1.2.3
+	 *
+	 * @param string $slug slug path to file similar to get_template_part.
+	 * @param string $name Optional. additional name appended to file similar to get_template_part.
+	 * @param array $args Optional. array of key/value pairs passed to the template file.
+	 * @param bool $do_blocks Optional. render blocks before echoing content.
+	 * 
+	 * @return string  Html of rendered blocks or block markup if $do_blocks is set to false.
+	 */
+	public static function get_wsu_block_template( $slug, $name = '', $args = array(), $do_blocks = true ) {
 
 		do_action( "get_template_part_{$slug}", $slug, $name, $args );
 
@@ -44,7 +61,17 @@ class Template {
 
 			include $template_path;
 
-			echo do_blocks( ob_get_clean() );
+			$block_html = ob_get_clean();
+
+			if ( ! $do_blocks ) {
+
+				echo $block_html;
+
+			} else {
+
+				echo do_blocks( $block_html );
+
+			}
 
 		} else {
 
