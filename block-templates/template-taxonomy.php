@@ -5,4 +5,5 @@
 <!-- /wp:wsutheme/post-header -->
 <!-- wp:wsutheme/posts {"style":"index"} -->
 <!-- /wp:wsutheme/posts -->
+<!-- wp:wsutheme/posts-pagination /-->
 <?php WSUWP\Theme\WDS\Theme::get_wsu_block_template( 'block-templates/template-footer', get_queried_object()->taxonomy, array(), false ); ?>
