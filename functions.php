@@ -4,7 +4,7 @@
 class Theme {
 
 
-	protected static $version = '1.2.1';
+	protected static $version = '1.3.0';
 
 
 	public static function get( $property ) {
@@ -80,9 +80,12 @@ class Theme {
 	}
 
 
-	public static function get_wsu_block_template( $slug, $name = '', $args = array() ) {
+	/*
+	* Alias for includes/templates|get_wsu_block_template *
+	*/
+	public static function get_wsu_block_template( $slug, $name = '', $args = array(), $do_blocks = true ) {
 
-		Template::get_wsu_block_template( $slug, $name, $args );
+		Template::get_wsu_block_template( $slug, $name, $args, $do_blocks );
 
 	}
 
