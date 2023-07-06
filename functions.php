@@ -38,6 +38,7 @@ class Theme {
 		require_once __DIR__ . '/includes/widgets.php';
 		require_once __DIR__ . '/includes/body-classes.php';
 		require_once __DIR__ . '/includes/template.php';
+		require_once __DIR__ . '/includes/taxonomies.php';
 
 	}
 
