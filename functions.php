@@ -30,15 +30,15 @@ class Theme {
 		define( 'WDSTHEMEVERSION', 3 );
 
 		require_once __DIR__ . '/includes/supports.php';
+		require_once __DIR__ . '/includes/menus.php';
+		require_once __DIR__ . '/includes/taxonomies.php';
 		require_once __DIR__ . '/includes/theme-config.php';
 		require_once __DIR__ . '/includes/theme-options.php';
 		require_once __DIR__ . '/includes/theme-blocks.php';
 		require_once __DIR__ . '/includes/scripts.php';
-		require_once __DIR__ . '/includes/menus.php';
 		require_once __DIR__ . '/includes/widgets.php';
 		require_once __DIR__ . '/includes/body-classes.php';
 		require_once __DIR__ . '/includes/template.php';
-		require_once __DIR__ . '/includes/taxonomies.php';
 
 	}
 

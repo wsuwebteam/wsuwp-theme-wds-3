@@ -9,15 +9,7 @@
 				<button data-panel="wsu-quicklinks-panel" class="wsu-navigation-mobile__search-button wsu-slide-in-panel--close-this wsu-slide-in-panel--open">Search/Quicklinks</button>
 			</div>
 			<div class="wsu-navigation-mobile__menu">
-				<?php wp_nav_menu(
-					array(
-						'theme_location' => 'site',
-						'menu_class'     => 'wsu-menu-collapse wsu-menu-collapse--style-mobile',
-						'container'      => '',
-						'walker'         => new WSUWP\Theme\WDS\Walker_Nav_Menu_Collapse(),
-						'menu_id'        => 'wsu-site-menu-mobile',
-					)
-				); ?>
+				<?php echo $content; ?>
 			</div>
 			<?php if ( has_nav_menu( 'audience' ) ) : ?>
 			<div class="wsu-navigation-mobile__audience">
