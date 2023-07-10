@@ -8,10 +8,14 @@ class Theme_Block_Featured_Image extends Block {
 	protected static $default_args = array(
 		'displayBlock'   => true,
 		'displayCaption' => true,
+		'style'          => 'figure',
 		'className'      => 'wsu-article__hero',
 		'image_id'       => '',
 		'image_caption'  => '',
 		'size'           => 'large',
+		'linkImage'      => '',
+		'link'           => '',
+		'hidden'         => '',
  	);
 
 
@@ -19,7 +23,15 @@ class Theme_Block_Featured_Image extends Block {
 
 		if ( ! static::should_hide( $args, $content ) ) {
 
-			$template_path = static::get_template_path( 'template' );
+			switch ( $args['style'] ) {
+
+				case 'img':
+					$template_path = static::get_template_path( 'templates/div' );
+					break;
+				default:
+					$template_path = static::get_template_path( 'templates/figure' );
+					break;
+			}
 
 			if ( $template_path ) {
 	

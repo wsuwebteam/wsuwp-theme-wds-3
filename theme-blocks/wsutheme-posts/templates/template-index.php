@@ -15,5 +15,5 @@
             <!-- wp:wsutheme/taxonomy-list {"taxonomy":"tags"} /-->
         <!-- /wp:wsutheme/post-footer -->
     </div>
-    <!-- wp:wsutheme/featured-image {"className":"wsu-article__thumbnail","displayCaption":"hide"} /-->
+    <!-- wp:wsutheme/featured-image {"className":"wsu-article__thumbnail","displayCaption":"hide","style":"img","linkImage":"true"} /-->
 <!-- /wp:wsutheme/article -->
