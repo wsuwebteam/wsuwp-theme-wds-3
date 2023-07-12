@@ -10,7 +10,7 @@ class Taxonomies {
 	}
 
 
-	function add_taxonimies_post_types() {
+	public static function add_taxonimies_post_types() {
 		// Add tag metabox to page
 		register_taxonomy_for_object_type( 'post_tag', 'page' );
 
