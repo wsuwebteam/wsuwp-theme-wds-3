@@ -18,6 +18,28 @@ class Body_Classes {
 
 		}
 
+		if ( is_tax( 'product_cat' ) ) {
+
+			$term = get_queried_object();
+
+			$classes[] = 'wsu-product-cat--' . $term->slug;
+
+		}
+
+		if ( is_singular( 'product' ) ) {
+
+			$taxonomy_terms = get_the_terms( get_the_ID(), 'product_cat' );
+
+			if ( $taxonomy_terms ) {
+
+				foreach ( $taxonomy_terms as $taxonomy_term ) {
+
+					$classes[] = 'product-cat-' . $taxonomy_term->slug;
+
+				}
+			}
+		}
+
 		$classes[] = 'wsu-template--' . Theme::get_context();
 
 		return $classes;
