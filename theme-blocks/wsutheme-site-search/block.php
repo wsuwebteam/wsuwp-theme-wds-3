@@ -17,11 +17,27 @@ class Theme_Block_Site_Search extends Block {
 
 		if ( ! static::should_hide( $args ) ) {
 
-			$template_path = static::get_template_path( 'template' );
+			$search_bar = static::get_template_path( 'templates/search-bar' );
 
-			if ( $template_path ) {
+			if ( isset( $_REQUEST['cat'] ) ) {
+
+				$search_results = static::get_template_path( 'templates/wordpress-results' );
+
+			} else {
+
+				$search_results = static::get_template_path( 'templates/google-results' );
+
+			}
+
+			if ( $search_bar && $search_results ) {
+
+				ob_start();
 	
-				include $template_path;
+				include $search_bar;
+
+				include $search_results;
+
+				echo do_blocks( ob_get_clean() );
 	
 			}
 		}
