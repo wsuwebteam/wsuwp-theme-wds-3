@@ -159,4 +159,15 @@ class Block {
 		}
 	}
 
+
+	protected static function merge_string( $string, $merge, $delimiter = ' ' ) {
+
+		$string_array = array_filter( explode( $delimiter, $string ) );
+
+		$string_array[] = $merge;
+
+		return implode( $delimiter, $string_array );
+
+	}
+
 }

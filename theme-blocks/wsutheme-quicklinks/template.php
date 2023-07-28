@@ -18,7 +18,7 @@
 						<form class="wsu-site-search__tab<?php if ( 'site' === $args['searchContext'] ) : ?> wsu-site-search--active<?php endif; ?>" data-context="site" method="get" action="<?php echo get_site_url(); ?>">
 							<div class="wsu-search-bar wsu-style--underline">
 								<div class="wsu-search-bar__wrapper">
-									<input class="wsu-search-bar__input" type="text" aria-label="Search input" placeholder="Search" name="s" />
+									<input class="wsu-search-bar__input wsu-slide-in-panel--focus" type="text" aria-label="Search input" placeholder="Search" name="s" />
 									<button class="wsu-search-bar__submit" aria-label="Submit Search"></button>
 								</div>
 							</div>
@@ -27,7 +27,7 @@
 							<input type="hidden" name="sa" value="search">
 							<div class="wsu-search-bar wsu-style--underline">
 								<div class="wsu-search-bar__wrapper">
-									<input class="wsu-search-bar__input" type="text" aria-label="Search input" placeholder="Search" name="q" />
+									<input class="wsu-search-bar__input wsu-slide-in-panel--focus" type="text" aria-label="Search input" placeholder="Search" name="q" />
 									<button class="wsu-search-bar__submit" aria-label="Submit Search"></button>
 								</div>
 							</div>

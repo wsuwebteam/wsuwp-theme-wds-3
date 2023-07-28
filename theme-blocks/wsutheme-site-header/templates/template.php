@@ -1,4 +1,4 @@
-<header class="wsu-header-unit ">
+<header class="<?php echo esc_attr( $args['className'] ); ?>">
 	<div class="wsu-header-unit__inner">
 		<div class="wsu-header-unit__banner">
 			<a href="<?php echo esc_url( $args['siteLink'] ); ?>" class="wsu-logo-lockup  wsu-logo-lockup--style-unit">
@@ -18,7 +18,9 @@
 					<?php dynamic_sidebar( 'header_banner' ); ?>
 				</div>
 			<?php endif; ?>
+			<?php if ( 'hide' !== $args['mobileMenu'] ) : ?>
 			<button class="wsu-button-menu wsu-slide-in-panel--open" data-panel="wsu-navigation-mobile" aria-label="Open Open Site Menu">Menu</button>
+			<?php endif; ?>
 		</div>
 	</div>
 </header>

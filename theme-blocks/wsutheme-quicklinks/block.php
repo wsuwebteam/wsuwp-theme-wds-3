@@ -30,6 +30,9 @@ class Theme_Block_Quicklinks extends Block {
 
 	protected static function set_args( &$args ) {
 
+		$args['displayBlock']      = Theme::get_wsu_option( 'theme', 'displayQuicklinks', $args['displayBlock'] );
+		$args['showSearchOptions'] = Theme::get_wsu_option( 'search', 'showOptions', $args['showSearchOptions'] );
+		$args['searchContext']     = Theme::get_wsu_option( 'search', 'context', $args['searchContext'] );
 		$args['primaryActionText'] = Theme::get_wsu_option( 'site_options', 'primaryActionText', $args['primaryActionText'] );
 		$args['primaryActionLink'] = Theme::get_wsu_option( 'site_options', 'primaryActionLink', $args['primaryActionLink'] );
 

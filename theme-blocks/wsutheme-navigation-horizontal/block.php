@@ -8,6 +8,8 @@ class Theme_Block_Navigation_Horizontal extends Block {
 	protected static $default_args = array(
 		'displayBlock' => true,
 		'className'    => '',
+		'style'        => 'wds',
+		'colorScheme'  => '',
  	);
 
 
@@ -16,6 +18,20 @@ class Theme_Block_Navigation_Horizontal extends Block {
 		if ( ! static::should_hide( $args, $content ) ) {
 
 			include __DIR__ . '/template.php';
+
+		}
+
+	}
+
+	protected static function set_args( &$args ) {
+
+		$args['className']   = self::merge_string( $args['className'], 'wsu-nav-site-horiz' );
+		$args['className']   = self::merge_string( $args['className'], 'wsu-nav-site-horiz--style-' . $args['style']  );
+		$args['colorScheme'] = Theme::get_wsu_option( 'horizontal_nav', 'colorScheme', $args['colorScheme'] );
+
+		if ( ! empty( $args['colorScheme'] ) ) {
+
+			$args['className'] = self::merge_string( $args['className'], 'wsu-color-scheme--' . $args['colorScheme'] );
 
 		}
 
