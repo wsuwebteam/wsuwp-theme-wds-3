@@ -1,3 +1,3 @@
-<nav class="wsu-nav-site-horiz wsu-nav-site-horiz--style-wds">
+<nav class="<?php echo esc_attr( $args['className'] ); ?>">
     <?php echo $content; ?>
 </nav>

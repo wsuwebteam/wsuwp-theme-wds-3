@@ -30,6 +30,7 @@ class Theme {
 		define( 'WDSTHEMEVERSION', 3 );
 
 		require_once __DIR__ . '/includes/supports.php';
+		require_once __DIR__ . '/includes/customizer.php';
 		require_once __DIR__ . '/includes/menus.php';
 		require_once __DIR__ . '/includes/taxonomies.php';
 		require_once __DIR__ . '/includes/theme-config.php';

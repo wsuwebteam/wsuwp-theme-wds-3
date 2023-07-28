@@ -10,6 +10,7 @@ class Theme_Block_Navigation_Vertical extends Block {
 		'className'    => '',
 		'menuStyle'    => 'vertical',
 		'menuDepth'    => '3',
+		'colorScheme'  => '',
  	);
 
 
@@ -25,6 +26,16 @@ class Theme_Block_Navigation_Vertical extends Block {
 
 
 	protected static function set_args( &$args, $content ) {
+
+		$args['className'] = self::merge_string( $args['className'], 'wsu-navigation-vertical' );
+
+		$args['colorScheme'] = Theme::get_wsu_option( 'vertical_nav', 'colorScheme', $args['colorScheme'] );
+
+		if ( ! empty( $args['colorScheme'] ) ) {
+
+			$args['className'] = self::merge_string( $args['className'], 'wsu-color-scheme--' . $args['colorScheme'] );
+
+		}
 
 		if ( ! has_nav_menu( 'site' ) ) {
 

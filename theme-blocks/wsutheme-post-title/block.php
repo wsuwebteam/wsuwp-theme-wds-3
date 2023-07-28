@@ -33,6 +33,7 @@ class Theme_Block_Post_Title extends Block {
 
 	protected static function set_args( &$args ) {
 
+		$args['displayBlock'] = self::get_theme_option( 'displayPageTitle', $args, $args['displayBlock'] );
 
 	}
 
