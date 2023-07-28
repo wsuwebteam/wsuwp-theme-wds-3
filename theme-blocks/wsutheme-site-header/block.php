@@ -6,12 +6,15 @@ class Theme_Block_Site_Header extends Block {
 	protected static $block_slug    = 'site-header';
 	protected static $option_group  = '';
 	protected static $default_args = array(
+		'className'    => '',
 		'displayBlock' => true,
 		'menuDepth'    => 3,
 		'type'         => 'unit',
 		'siteTitle'    => '',
 		'siteSubtitle' => '',
 		'siteLink'     => '',
+		'colorScheme'  => '',
+		'mobileMenu'   => 'show',
  	);
 
 
@@ -37,8 +40,16 @@ class Theme_Block_Site_Header extends Block {
 
 		$args['displayBlock'] = Theme::get_wsu_option( 'theme', 'displaySiteHeader', $args['displayBlock'] );
 		$args['type']         = Theme::get_wsu_option( 'theme', 'siteHeader', $args['type'] );
+		$args['colorScheme']  = Theme::get_wsu_option( 'site_header', 'colorScheme', $args['colorScheme'] );
+		$args['mobileMenu']   = Theme::get_wsu_option( 'theme', 'mobileMenu', $args['mobileMenu'] );
 
-		
+		$args['className'] = self::merge_string( $args['className'], 'wsu-header-' . $args['type'] );
+
+		if ( ! empty( $args['colorScheme'] ) ) {
+
+			$args['className'] = self::merge_string( $args['className'], 'wsu-color-scheme--' . $args['colorScheme'] );
+
+		}
 
 		if ( 'campus' === $args['type'] ) {
 
