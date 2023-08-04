@@ -5,7 +5,9 @@ class Widgets {
 
 	public static function init() {
 
-		add_action( 'widgets_init', array( __CLASS__, 'register_widget_areas' ) );
+		add_action( 'init', array( __CLASS__, 'register_widget_areas' ), 99 );
+
+		add_action( 'init', array( __CLASS__, 'wsu_register_sidebars' ), 99 );
 
 	}
 
@@ -24,6 +26,41 @@ class Widgets {
 
 			return $sidebars;
 
+		}
+
+	}
+
+
+	public static function wsu_register_sidebars() {
+
+		$post_types = get_post_types( array( 'public' => true ), 'objects' );
+
+		$wsu_options = apply_filters( 'wsu_theme_options', array() );
+
+		$exclude_post_types = array( 'post', 'page' );
+
+		foreach ( $post_types as $post_type ) {
+
+			$template_name = 'template_' . $post_type->name;
+
+			if ( ! in_array( $post_type->name, $exclude_post_types, true ) && array_key_exists( $template_name, $wsu_options ) ) {
+
+				if ( ! empty( $wsu_options[ $template_name ]['addSidebar'] ) ) {
+
+					register_sidebar(
+						array(
+							'name'          => "$post_type->label | Sidebar",
+							'id'            => "sidebar_{$post_type->name}",
+							'description'   => '',
+							'before_widget' => '<div class="wsu-widget wsu-widget--sidebar">',
+							'after_widget'  => '</div>',
+							'before_title'  => '<h2>',
+							'after_title'   => '</h2>',
+						)
+					);
+
+				}
+			}
 		}
 
 	}
