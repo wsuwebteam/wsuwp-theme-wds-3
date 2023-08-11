@@ -39,20 +39,67 @@ class Widgets {
 
 		$exclude_post_types = array( 'post', 'page' );
 
+		$context_array = array(
+			'post_archive' => 'Blog/Post Archive',
+			'category'     => 'Category Archive',
+			'tag'          => 'Tag Archive',
+		);
+
 		foreach ( $post_types as $post_type ) {
 
-			$template_name = 'template_' . $post_type->name;
+			if ( ! in_array( $post_type->name, $exclude_post_types, true ) ) {
 
-			if ( ! in_array( $post_type->name, $exclude_post_types, true ) && array_key_exists( $template_name, $wsu_options ) ) {
+				$context_array[ $post_type->name ] = $post_type->label;
+
+			}
+		}
+		
+		foreach ( $context_array as $name => $label ) {
+
+			$template_name = 'template_' . $name;
+
+			if ( array_key_exists( $template_name, $wsu_options ) ) {
 
 				if ( ! empty( $wsu_options[ $template_name ]['addSidebar'] ) ) {
 
 					register_sidebar(
 						array(
-							'name'          => "$post_type->label | Sidebar",
-							'id'            => "sidebar_{$post_type->name}",
+							'name'          => "$label | Sidebar",
+							'id'            => "sidebar_{$name}",
 							'description'   => '',
 							'before_widget' => '<div class="wsu-widget wsu-widget--sidebar">',
+							'after_widget'  => '</div>',
+							'before_title'  => '<h2>',
+							'after_title'   => '</h2>',
+						)
+					);
+
+				}
+
+				if ( ! empty( $wsu_options[ $template_name ]['widgetsBefore'] ) && 'hide' !== $wsu_options[ $template_name ]['widgetsBefore'] ) {
+
+					register_sidebar(
+						array(
+							'name'          => "$label | Before Content",
+							'id'            => "before_content_{$name}",
+							'description'   => '',
+							'before_widget' => '<div class="wsu-widget wsu-widget--before-content">',
+							'after_widget'  => '</div>',
+							'before_title'  => '<h2>',
+							'after_title'   => '</h2>',
+						)
+					);
+
+				}
+
+				if ( ! empty( $wsu_options[ $template_name ]['widgetsAfter'] ) && 'hide' !== $wsu_options[ $template_name ]['widgetsAfter'] ) {
+
+					register_sidebar(
+						array(
+							'name'          => "$label | After Content",
+							'id'            => "after_content_{$name}",
+							'description'   => '',
+							'before_widget' => '<div class="wsu-widget wsu-widget--after-content">',
 							'after_widget'  => '</div>',
 							'before_title'  => '<h2>',
 							'after_title'   => '</h2>',
@@ -72,9 +119,6 @@ class Widgets {
 		$widget_areas = array( 
 			'post'         => 'Post',
 			'page'         => 'Page',
-			'post_archive' => 'Blog/Post Archive',
-			'category'     => 'Category Archive',
-			'tag'          => 'Tag Archive',
 		);
 
 		foreach ( $widget_areas as $slug => $label ) {
