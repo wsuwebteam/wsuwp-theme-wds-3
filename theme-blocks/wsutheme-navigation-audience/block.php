@@ -7,7 +7,8 @@ class Theme_Block_Navigation_Audience extends Block {
 	protected static $option_group  = '';
 	protected static $default_args = array(
 		'displayBlock' => true,
-		'className'    => '',
+		'className'    => 'wsu-navigation-audience',
+		'colorScheme'  => '',
  	);
 
 
@@ -19,6 +20,18 @@ class Theme_Block_Navigation_Audience extends Block {
 
 		}
 
+	}
+
+	protected static function set_args( &$args ) {
+
+		$args['colorScheme']  = Theme::get_wsu_option( 'audience_nav', 'colorScheme', $args['colorScheme'] );
+
+		if ( ! empty( $args['colorScheme'] ) ) {
+
+			$args['className'] = self::merge_string( $args['className'], 'wsu-color-scheme--' . $args['colorScheme'] );
+
+		}
+	
 	}
 
 
