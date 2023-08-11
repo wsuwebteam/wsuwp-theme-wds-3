@@ -75,6 +75,15 @@ class Customizer {
 				),
 			),
 		),
+		'audience_nav' => array(
+			'colorScheme' => array(
+				'default' => 'light',
+				'options' => array(
+					'dark'  => 'On',
+					'light' => 'Off',
+				),
+			),
+		),
 	);
 
 	protected static $template_supports = array(
@@ -212,7 +221,7 @@ class Customizer {
 
 	public static function init() {
 
-		add_filter( 'wsu_theme_options', array( __CLASS__, 'add_theme_supports' ) );
+		add_filter( 'wsu_theme_customizer_options', array( __CLASS__, 'add_theme_supports' ) );
 
 		add_filter( 'wsu_template_options', array( __CLASS__, 'add_template_supports' ) );
 

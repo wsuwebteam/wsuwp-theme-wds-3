@@ -9,6 +9,7 @@ class Theme_Block_Widget_Area extends Block {
 		'displayBlock'      => true,
 		'className'         => 'wsu-widget-area',
 		'location'          => '',
+		'locationPrefix'    => '',
  	);
 
 
@@ -24,6 +25,12 @@ class Theme_Block_Widget_Area extends Block {
 
 
 	protected static function set_args( &$args ) {
+
+		if ( ! empty( $args['locationPrefix'] ) ) {
+
+			$args['location'] = $args['locationPrefix'] . '_' . $args['context'];
+
+		}
 
 		if ( empty( $args['location'] ) ) {
 
