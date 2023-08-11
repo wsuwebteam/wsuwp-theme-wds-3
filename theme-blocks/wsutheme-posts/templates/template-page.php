@@ -6,6 +6,7 @@
         <!-- wp:wsutheme/byline {"displayBlock":"hide","location":"before"} /-->
         <!-- wp:wsutheme/post-share {"displayBlock":"hide","location":"before"} /-->
     <!-- /wp:wsutheme/post-header -->
+    <!-- wp:wsutheme/featured-image {"displayBlock":"hide"} /-->
     <!-- wp:wsutheme/post-content /-->
     <!-- wp:wsutheme/post-footer -->
         <!-- wp:wsutheme/publish-date {"displayBlock":"hide","location":"after"} /-->

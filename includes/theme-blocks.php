@@ -32,6 +32,7 @@ class Theme_Blocks {
 		'wsutheme/site-search'           => 'Theme_Block_Site_Search',
 		'wsutheme/site-social'           => 'Theme_Block_Site_Social',
 		'wsutheme/taxonomy-list'         => 'Theme_Block_Taxonomy_List',
+		'wsutheme/term-description'      => 'Theme_Block_Term_Description',
 		'wsutheme/widget-area'           => 'Theme_Block_Widget_Area',
 		'wsutheme/wrapper-content'       => 'Theme_Block_Wrapper_Content',
 		'wsutheme/wrapper-main'          => 'Theme_Block_Wrapper_Main',
