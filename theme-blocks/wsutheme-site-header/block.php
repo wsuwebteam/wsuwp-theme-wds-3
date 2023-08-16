@@ -13,6 +13,7 @@ class Theme_Block_Site_Header extends Block {
 		'siteTitle'    => '',
 		'siteSubtitle' => '',
 		'siteLink'     => '',
+		'subtitleLink' => '',
 		'colorScheme'  => '',
 		'mobileMenu'   => 'show',
  	);
@@ -88,6 +89,7 @@ class Theme_Block_Site_Header extends Block {
 			$args['siteTitle']    = get_bloginfo( 'name' );
 			$args['siteSubtitle'] = get_bloginfo( 'description' );
 			$args['siteLink']     = get_home_url();
+			$args['subtitleLink'] = Theme::get_wsu_option( 'site_options', 'subtitleLink', $args['subtitleLink'] );
 
 		}
 	}
