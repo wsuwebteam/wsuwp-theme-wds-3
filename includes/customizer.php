@@ -56,6 +56,9 @@ class Customizer {
 			'primaryActionLink' => array(
 				'default' => 'https://foundation.wsu.edu/give/',
 			),
+			'subtitleLink' => array(
+				'default' => '',
+			),
 		),
 		'horizontal_nav' => array(
 			'colorScheme' => array(
