@@ -7,6 +7,8 @@ class Body_Classes {
 
 		add_filter( 'body_class', array( __CLASS__, 'add_menu_body_classes' ) );
 
+		add_filter( 'body_class', array( __CLASS__, 'add_template_body_classes' ) );
+
 	}
 
 
@@ -41,6 +43,24 @@ class Body_Classes {
 		}
 
 		$classes[] = 'wsu-template--' . Theme::get_context();
+
+		return $classes;
+
+	}
+
+	public static function add_template_body_classes( $classes ) {
+
+		$context = Theme::get_context();
+
+		$template = 'template_' . str_replace( '-', '_', $context );
+
+		$body_classes = apply_filters( 'wsu_theme_options', '', $template, 'bodyClass' );
+
+		if ( ! empty( $body_classes ) ) {
+
+			$classes[] = $body_classes;
+
+		}
 
 		return $classes;
 

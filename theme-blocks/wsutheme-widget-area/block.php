@@ -28,7 +28,7 @@ class Theme_Block_Widget_Area extends Block {
 
 		if ( ! empty( $args['locationPrefix'] ) ) {
 
-			$args['location'] = $args['locationPrefix'] . '_' . $args['context'];
+			$args['location'] = $args['locationPrefix'] . '_' . str_replace( '-','_', $args['context'] );
 
 		}
 

@@ -106,6 +106,7 @@ class Customizer {
 				'displayTags'             => 'hide',
 				'widgetsBefore'           => 'hide',
 				'widgetsAfter'            => 'hide',
+				'bodyClass'               => '',
 			), 
 		),
 		'page'      => array(
@@ -124,6 +125,7 @@ class Customizer {
 				'displayTags'             => 'hide',
 				'widgetsBefore'           => 'hide',
 				'widgetsAfter'            => 'hide',
+				'bodyClass'               => '',
 			), 
 		),
 		'post'      => array(
@@ -143,6 +145,7 @@ class Customizer {
 				'displayTags'             => 'show',
 				'widgetsBefore'           => 'show',
 				'widgetsAfter'            => 'show',
+				'bodyClass'               => '',
 			), 
 		),
 		'home'      => array(
@@ -161,6 +164,7 @@ class Customizer {
 				'displayTags'             => 'show',
 				'widgetsBefore'           => 'show',
 				'widgetsAfter'            => 'show',
+				'bodyClass'               => '',
 			), 
 		),
 		'category'  => array(
@@ -179,6 +183,7 @@ class Customizer {
 				'displayTags'             => 'show',
 				'widgetsBefore'           => 'show',
 				'widgetsAfter'            => 'show',
+				'bodyClass'               => '',
 			), 
 		),
 		'tag'       => array(
@@ -197,6 +202,7 @@ class Customizer {
 				'displayTags'             => 'show',
 				'widgetsBefore'           => 'show',
 				'widgetsAfter'            => 'show',
+				'bodyClass'               => '',
 			), 
 		),
 		'post_type' => array(
@@ -218,7 +224,30 @@ class Customizer {
 				'displayTags'             => 'hide',
 				'widgetsBefore'           => 'hide',
 				'widgetsAfter'            => 'hide',
+				'bodyClass'               => '',
 			), 
+		),
+		'post_type_archive' => array(
+			'option_group'       => '',
+			'displayName'        => '',
+			'supports'           => array(
+				'sidebar'              => 'hide',
+				'addSidebar'           => false,
+				'displayPageTitle'         => 'show',
+				'displayBreadcrumbs'       => 'show',
+				'displayPublishDateBefore' => 'hide',
+				'displayBylineBefore'      => 'hide',
+				'displayShareBefore'       => 'hide',
+				'displayFeaturedImage'     => 'hide',
+				'displayBylineAfter'      => 'hide',
+				'displayShareAfter'       => 'hide',
+				'displayPublishDateAfter' => 'hide',
+				'displayCategories'       => 'hide',
+				'displayTags'             => 'hide',
+				'widgetsBefore'           => 'hide',
+				'widgetsAfter'            => 'hide',
+				'bodyClass'               => '',
+			),
 		),
 	);
 
