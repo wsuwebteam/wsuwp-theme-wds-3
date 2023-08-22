@@ -139,7 +139,7 @@ class Template {
 
 				$post_type = get_queried_object();
 
-				self::$context[] = 'archive-' . $post_type->slug;
+				self::$context[] = 'archive-' . $post_type->name;
 
 			}
 		}

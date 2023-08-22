@@ -51,6 +51,8 @@ class Widgets {
 
 				$context_array[ $post_type->name ] = $post_type->label;
 
+				$context_array[ 'archive_' . $post_type->name ] = $post_type->label . ' Archive';
+
 			}
 		}
 		

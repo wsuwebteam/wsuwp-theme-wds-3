@@ -35,6 +35,8 @@ class Theme_Block_Post_Title extends Block {
 
 		$args['displayBlock'] = self::get_theme_option( 'displayPageTitle', $args, $args['displayBlock'] );
 
+		$args['tag'] = ( 'none' !== $args['tag'] ) ? $args['tag'] : '';
+
 	}
 
 	protected static function set_content( &$content ) {
