@@ -16,7 +16,17 @@ class Theme_Config {
 
 		add_filter( 'get_comment_author_link', array( __CLASS__, 'comments_remove_comment_author_link' ), 10, 3 );
 
-		add_filter( 'wp_robots', array( __CLASS__, 'filter_robots' ), 9999 );
+
+		// wp_robots was not added until 5.7.
+		if ( version_compare( get_bloginfo( 'version' ), '5.7', '>=' ) ) {
+
+			add_filter( 'wp_robots', array( __CLASS__, 'filter_robots' ), 9999 );
+
+		} else {
+		
+			add_action( 'wp_head', array( __CLASS__, 'legacy_robots' ), 1 );
+
+		}
 
 	}
 
@@ -36,6 +46,12 @@ class Theme_Config {
 		}
 
 		return $robots;
+
+	}
+
+	public static function legacy_robots( $robots ) {
+
+		echo "<meta name='robots' content='noindex, max-image-preview:large, nofollow' />";
 
 	}
 
