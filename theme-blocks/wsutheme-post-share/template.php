@@ -11,4 +11,7 @@
 	<li class="wsu-social-icons__email">
 		<a href="mailto:?subject=Shared%20With%20You:%20<?php echo esc_attr( urldecode( $args['title'] ) ); ?>&body=<?php echo esc_url( $args['link'] ); ?>" title="share with email"></a>
 	</li>
+	<li class="wsu-social-icons__link" style="display: none">
+		<a href="<?php echo esc_url( $args['link'] ); ?>" title="share with link"></a>
+	</li>
 </ul>
