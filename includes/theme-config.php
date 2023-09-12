@@ -51,7 +51,11 @@ class Theme_Config {
 
 	public static function legacy_robots( $robots ) {
 
-		echo "<meta name='robots' content='noindex, max-image-preview:large, nofollow' />";
+		if ( is_search() ) {
+
+			echo "<meta name='robots' content='noindex, max-image-preview:large, nofollow' />";
+
+		}
 
 	}
 
