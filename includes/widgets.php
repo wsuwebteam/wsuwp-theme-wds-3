@@ -55,12 +55,13 @@ class Widgets {
 
 			}
 		}
+
 		
 		foreach ( $context_array as $name => $label ) {
 
 			$template_name = 'template_' . $name;
 
-			if ( array_key_exists( $template_name, $wsu_options ) ) {
+			if ( is_array( $wsu_options ) && array_key_exists( $template_name, $wsu_options ) ) {
 
 				if ( ! empty( $wsu_options[ $template_name ]['addSidebar'] ) ) {
 
