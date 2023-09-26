@@ -62,7 +62,7 @@ class Theme_Block_Taxonomy_List extends Block {
 
 		if ( in_the_loop() && has_category() ) {
 
-			echo 'Categories : ';
+			echo 'Categories: ';
 			the_category( ', ' );
 
 		}
