@@ -2,8 +2,8 @@
     <div class="wsu-section__inner wsu-width--content">    
         <form class="wsu-search " method="get" action="<?php echo get_site_url(); ?>">
             <div class="wsu-search__search-bar">
-                <input class="wsu-search__input" type="text" aria-lable="Search input" placeholder="Search" name="s" value="<?php echo esc_attr( $_REQUEST['s'] ); ?>" />
-                <button class="wsu-search__submit" aria-lable="Submit Search"></button>
+                <input class="wsu-search__input" type="text" aria-label="Search input" placeholder="Search" name="s" value="<?php echo esc_attr( $_REQUEST['s'] ); ?>" />
+                <button class="wsu-search__submit" aria-label="Submit Search"></button>
             </div>
 
             <div class="wsu-search__search-options">
