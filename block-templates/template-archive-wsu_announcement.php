@@ -4,7 +4,13 @@
 			<!-- wp:wsutheme/page-title -->Notices and Announcements<!-- /wp:wsutheme/page-title -->
 		<!-- /wp:wsutheme/post-header -->
 		<!-- wp:wsutheme/widget-area {"locationPrefix":"before_content"} /-->
-		<?php if ( ! is_paged() ) : ?><h2>Recent <strong>Submissions</strong></h2><?php endif; ?>
+		<!-- wp:wsutheme/search-bar /-->
+		<h2>
+			<?php if ( isset( $_REQUEST['search_announcements'] ) ) : ?>Search <strong>Results</strong>
+				<?php elseif ( is_paged() ) : ?>Announcement <strong>Archive</strong>
+				<?php else : ?>Recent <strong>Submissions</strong>
+			<?php endif; ?>
+		</h2>
 		<!-- wp:wsutheme/posts {"style":"accordion"} -->
 		<!-- /wp:wsutheme/posts -->
 		<!-- wp:wsutheme/posts-pagination /-->
