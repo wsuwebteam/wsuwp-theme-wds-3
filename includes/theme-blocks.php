@@ -26,6 +26,7 @@ class Theme_Blocks {
 		'wsutheme/posts-pagination'      => 'Theme_Block_Posts_Pagination',
 		'wsutheme/publish-date'          => 'Theme_Block_Publish_Date',
 		'wsutheme/quicklinks'            => 'Theme_Block_Quicklinks',
+		'wsutheme/search-bar'            => 'Theme_Block_Search_Bar',
 		'wsutheme/site-contact'          => 'Theme_Block_Site_Contact',
 		'wsutheme/site-footer'           => 'Theme_Block_Site_Footer',
 		'wsutheme/site-header'           => 'Theme_Block_Site_Header',
