@@ -6,8 +6,8 @@
 		<!-- wp:wsutheme/widget-area {"locationPrefix":"before_content"} /-->
 		<!-- wp:wsutheme/search-bar /-->
 		<h2>
-			<?php if ( isset( $_REQUEST['search_announcements'] ) ) : ?>Search <strong>Results</strong>
-				<?php elseif ( is_paged() ) : ?>Announcement <strong>Archive</strong>
+			<?php if ( ! empty( $_REQUEST['search_announcements'] ) ) : ?>Search <strong>Results</strong>
+				<?php elseif ( is_paged() ) : ?>Archived <strong>Submissions</strong>
 				<?php else : ?>Recent <strong>Submissions</strong>
 			<?php endif; ?>
 		</h2>
