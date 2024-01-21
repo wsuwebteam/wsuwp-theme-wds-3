@@ -249,6 +249,19 @@ class Customizer {
 				'bodyClass'               => '',
 			),
 		),
+		'search' => array(
+			'option_group'       => 'template_search',
+			'displayName'        => 'Search',
+			'supports'           => array(
+				'sidebar'              => 'hide',
+				'addSidebar'           => false,
+				'displayPageTitle'         => 'show',
+				'displayBreadcrumbs'       => 'show',
+				'widgetsBefore'           => 'hide',
+				'widgetsAfter'            => 'hide',
+				'bodyClass'               => '',
+			),
+		),
 	);
 
 	public static function init() {
