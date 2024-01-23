@@ -113,6 +113,7 @@ class Customizer {
 			'option_group'       => 'template_page',
 			'displayName'        => 'Page',
 			'supports'           => array(
+				'sidebar'            => '',
 				'displayPageTitle'   => 'show',
 				'displayBreadcrumbs' => 'show',
 				'displayPublishDateBefore' => 'hide',
