@@ -38,6 +38,7 @@ class Theme_Blocks {
 		'wsutheme/wrapper-content'       => 'Theme_Block_Wrapper_Content',
 		'wsutheme/wrapper-main'          => 'Theme_Block_Wrapper_Main',
 		'wsutheme/wrapper-site'          => 'Theme_Block_Wrapper_Site',
+		'wsutheme/gallery'               => 'Theme_Block_Gallery',
 	);
 
 	public static function init() {

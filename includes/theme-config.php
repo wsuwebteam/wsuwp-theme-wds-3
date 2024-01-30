@@ -16,6 +16,11 @@ class Theme_Config {
 
 		add_filter( 'get_comment_author_link', array( __CLASS__, 'comments_remove_comment_author_link' ), 10, 3 );
 
+		add_filter( 'template_include', array( __CLASS__, 'add_media_template' ), 10 );
+
+		add_action( 'init' , array( __CLASS__, 'add_categories_for_attachments' ) );
+
+		add_action( 'init' , array( __CLASS__, 'add_tags_for_attachments' ) );
 
 		// wp_robots was not added until 5.7.
 		if ( version_compare( get_bloginfo( 'version' ), '5.7', '>=' ) ) {
@@ -23,7 +28,7 @@ class Theme_Config {
 			add_filter( 'wp_robots', array( __CLASS__, 'filter_robots' ), 9999 );
 
 		} else {
-		
+
 			add_action( 'wp_head', array( __CLASS__, 'legacy_robots' ), 1 );
 
 		}
@@ -114,6 +119,38 @@ class Theme_Config {
 
 		return $post_object;
 	}
+
+
+	public static function add_media_template( $template ) {
+
+		if ( strpos( $_SERVER['REQUEST_URI'], 'wp-gallery-archive' ) ) {
+
+			$template = Theme::get( 'dir' ) . '/gallery-archive.php';
+
+		}
+
+		return $template;
+
+	}
+
+
+	// add categories for attachments
+	public static function add_categories_for_attachments() {
+
+		register_taxonomy_for_object_type( 'category', 'attachment' );
+
+	}
+	
+
+	// add tags for attachments
+	public static function add_tags_for_attachments() {
+
+		register_taxonomy_for_object_type( 'post_tag', 'attachment' );
+
+	}
+	
+
+
 
 }
 
