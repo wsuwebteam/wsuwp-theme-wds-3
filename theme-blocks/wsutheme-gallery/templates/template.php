@@ -1,0 +1,7 @@
+<figure class="wp-container-2 wp-block-gallery-1 wp-block-gallery has-nested-images columns-default is-cropped">
+    <?php foreach ( $gallery_items as $gallery_item ) : ?>
+<figure class="wp-block-image size-large"><a href="<?php echo esc_url( $gallery_item['src'] ); ?>"><img width="<?php echo esc_attr( $gallery_item['width'] ); ?>" height="<?php echo esc_attr( $gallery_item['height'] ); ?>" data-id="<?php echo esc_attr( $gallery_item['id'] ); ?>" src="<?php echo esc_url( $gallery_item['src'] ); ?>" alt="<?php echo esc_attr( $gallery_item['alt'] ); ?>" class="wp-image-<?php echo esc_attr( $gallery_item['id'] ); ?>" srcset="<?php echo esc_attr( $gallery_item['srcset'] ); ?>" sizes="<?php echo esc_attr( $gallery_item['sizes'] ); ?>"></a></figure>
+<?php endforeach; ?>
+</figure>
+<style>.wp-container-2 {display: flex;gap: 0.5em;flex-wrap: wrap;align-items: center;}.wp-container-2 > * { margin: 0; }</style>
+<style> .wp-block-gallery-1{ --wp--style--unstable-gallery-gap: var( --wp--style--gallery-gap-default, var( --gallery-block--gutter-size, var( --wp--style--block-gap, 0.5em ) ) ); gap: var( --wp--style--gallery-gap-default, var( --gallery-block--gutter-size, var( --wp--style--block-gap, 0.5em ) ) )}</style>
