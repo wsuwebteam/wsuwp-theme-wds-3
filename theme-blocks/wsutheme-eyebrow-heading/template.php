@@ -1,0 +1,1 @@
+<div class="wsu-eyebrow-header"><?php echo wp_kses_post( $content ); ?></div>

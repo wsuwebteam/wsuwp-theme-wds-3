@@ -1,6 +1,7 @@
 <!-- wp:wsutheme/article {'style":"post"} -->
     <!-- wp:wsutheme/post-header -->
         <!-- wp:wsutheme/breadcrumbs /-->
+        <!-- wp:wsutheme/eyebrow-heading /-->
         <!-- wp:wsutheme/post-title /-->
         <!-- wp:wsutheme/publish-date {"location":"before"}  /-->
         <!-- wp:wsutheme/byline {"displayBlock":"hide","location":"before"}  /-->
