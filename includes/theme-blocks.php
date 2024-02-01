@@ -39,6 +39,7 @@ class Theme_Blocks {
 		'wsutheme/wrapper-main'          => 'Theme_Block_Wrapper_Main',
 		'wsutheme/wrapper-site'          => 'Theme_Block_Wrapper_Site',
 		'wsutheme/gallery'               => 'Theme_Block_Gallery',
+		'wsutheme/eyebrow-heading'       => 'Theme_Block_Eyebrow_Heading',
 	);
 
 	public static function init() {
